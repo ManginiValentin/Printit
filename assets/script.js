@@ -16,3 +16,32 @@ const slides = [
     tagLine: "Autocollants <span>avec découpe laser sur mesure</span>",
   },
 ];
+//*TABLEAU*//
+slides.length;
+console.log(slides.length);
+
+//*ARROW *//
+const arrow_right = document.querySelector(".arrow_right");
+arrow_right.addEventListener("click", function () {
+  alert("bonjour 2");
+});
+
+const arrow_left = document.querySelector(".arrow_left");
+arrow_left.addEventListener("click", function () {
+  alert("bonjour");
+});
+
+//* DOTS *//
+const els = document.querySelector(".dots");
+
+let four = "";
+for (let i = 0; i < 4; i++) {
+  four += '<div class="dot"></div>';
+}
+
+els.innerHTML = four;
+
+//* parcourir les élements du tableau*//
+for (let i = 0; i < slides.length; i++) {
+  console.log(i);
+}
