@@ -20,28 +20,48 @@ const slides = [
 slides.length;
 console.log(slides.length);
 
+//* parcourir les élements du tableau*//
+for (let i = 0; i < slides.length; i++) {
+  console.log(slides[i].image);
+}
+
 //*ARROW *//
+const bannerImg = document.querySelector(".banner-img");
 const arrow_right = document.querySelector(".arrow_right");
+const arrow_left = document.querySelector(".arrow_left");
+
 arrow_right.addEventListener("click", function () {
-  alert("bonjour 2");
+  alert("clique");
 });
 
-const arrow_left = document.querySelector(".arrow_left");
 arrow_left.addEventListener("click", function () {
   alert("bonjour");
 });
 
 //* DOTS *//
-const els = document.querySelector(".dots");
+const dots = document.querySelector(".dots");
 
-let four = "";
-for (let i = 0; i < 4; i++) {
-  four += '<div class="dot"></div>';
+for (let i = 0; i < slides.length; i++) {
+  const dot = document.createElement("div");
+  dot.classList.add("dot");
+  dots.appendChild(dot);
 }
 
-els.innerHTML = four;
+const dot = document.querySelectorAll(".dot");
+const dot_selected = document.querySelector(".dot_selected");
 
-//* parcourir les élements du tableau*//
+dot[currentIndex].classList.add(".dot_selected");
+
+let currentIndex = 0;
+
+function setCurrentSlide(index) {
+  dot[currentIndex].classList.remove(".dot_selected");
+  currentIndex = index;
+  dot[currentIndex].classList.add(".dot_selected");
+}
+
 for (let i = 0; i < slides.length; i++) {
-  console.log(i);
+  dot[i].addEventListener("click", function () {
+    setCurrentSlide(i);
+  });
 }
