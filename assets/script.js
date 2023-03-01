@@ -28,50 +28,6 @@ for (let i = 0; i < slides.length; i++) {
   console.log(slides[i].image);
 }
 
-//*ARROW *//
-const bannerImg = document.querySelector(".banner-img");
-const tagLine = document.querySelector(".tagLine");
-const arrow_right = document.querySelector(".arrow_right");
-const arrow_left = document.querySelector(".arrow_left");
-
-let current = 0;
-
-arrow_right.addEventListener("click", function () {
-  if (current === slides.length - 1) {
-    dot[currentIndex].classList.remove("dot_selected");
-    currentIndex = 0;
-    dot[currentIndex].classList.add("dot_selected");
-  } else {
-    dot[currentIndex].classList.remove("dot_selected");
-    currentIndex++;
-    dot[currentIndex].classList.add("dot_selected");
-  }
-  current++;
-
-  bannerImg.src = slides[currentIndex].image;
-  tagLine.innerHTML = slides[currentIndex].tagLine;
-});
-
-arrow_left.addEventListener("click", function () {
-  if (current === 0) {
-    dot[currentIndex].classList.remove("dot_selected");
-    currentIndex = slides.length - 1;
-    dot[currentIndex].classList.add("dot_selected");
-  } else {
-    dot[currentIndex].classList.remove("dot_selected");
-    currentIndex--;
-    dot[currentIndex].classList.add("dot_selected");
-  }
-  current--;
-
-  bannerImg.src = slides[currentIndex].image;
-  tagLine.innerHTML = slides[currentIndex].tagLine;
-
-  if (current < 0) {
-    current = slides.length - 1;
-  }
-});
-
 //* DOTS *//
 const dots = document.querySelector(".dots");
 
@@ -88,15 +44,44 @@ let currentIndex = 0;
 
 dot[currentIndex].classList.add("dot_selected");
 
-function setCurrentSlide(index) {
-  dot[currentIndex].classList.remove("dot_selected");
-  currentIndex = index;
-  dot[currentIndex].classList.add("dot_selected");
-  current = index;
-}
+//*ARROW *//
+const bannerImg = document.querySelector(".banner-img");
+const tagLine = document.querySelector(".tagLine");
+const arrow_right = document.querySelector(".arrow_right");
+const arrow_left = document.querySelector(".arrow_left");
 
-for (let i = 0; i < slides.length; i++) {
-  dot[i].addEventListener("click", function () {
-    setCurrentSlide(i);
-  });
-}
+let current = 0;
+
+arrow_right.addEventListener("click", function () {
+  if (current === slides.length - 1) {
+    dot[currentIndex].classList.remove("dot_selected");
+    currentIndex = 0;
+    dot[currentIndex].classList.add("dot_selected");
+    current = 0;
+  } else {
+    dot[currentIndex].classList.remove("dot_selected");
+    currentIndex++;
+    dot[currentIndex].classList.add("dot_selected");
+    current++;
+  }
+
+  bannerImg.src = slides[currentIndex].image;
+  tagLine.innerHTML = slides[currentIndex].tagLine;
+});
+
+arrow_left.addEventListener("click", function () {
+  if (current === 0) {
+    dot[currentIndex].classList.remove("dot_selected");
+    currentIndex = slides.length - 1;
+    dot[currentIndex].classList.add("dot_selected");
+    current = slides.length - 1;
+  } else {
+    dot[currentIndex].classList.remove("dot_selected");
+    currentIndex--;
+    dot[currentIndex].classList.add("dot_selected");
+    current--;
+  }
+
+  bannerImg.src = slides[currentIndex].image;
+  tagLine.innerHTML = slides[currentIndex].tagLine;
+});
