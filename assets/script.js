@@ -19,15 +19,6 @@ const slides = [
   },
 ];
 
-//*TABLEAU*//
-slides.length;
-console.log(slides.length);
-
-//* parcourir les élements du tableau*//
-for (let i = 0; i < slides.length; i++) {
-  console.log(slides[i].image);
-}
-
 //* DOTS *//
 const dots = document.querySelector(".dots");
 
@@ -51,37 +42,31 @@ const arrow_right = document.querySelector(".arrow_right");
 const arrow_left = document.querySelector(".arrow_left");
 
 let current = 0;
+let nextIndex = 1;
 
 arrow_right.addEventListener("click", function () {
-  if (current === slides.length - 1) {
-    dot[currentIndex].classList.remove("dot_selected");
-    currentIndex = 0;
-    dot[currentIndex].classList.add("dot_selected");
-    current = 0;
+  if (currentIndex === slides.length - 1) {
+    nextIndex = 0;
   } else {
-    dot[currentIndex].classList.remove("dot_selected");
-    currentIndex++;
-    dot[currentIndex].classList.add("dot_selected");
-    current++;
+    nextIndex = currentIndex + 1;
   }
 
-  bannerImg.src = slides[currentIndex].image;
-  tagLine.innerHTML = slides[currentIndex].tagLine;
+  bannerImg.src = slides[nextIndex].image;
+  tagLine.innerHTML = slides[nextIndex].tagLine;
+  dot[currentIndex].classList.remove("dot_selected");
+  dot[nextIndex].classList.add("dot_selected");
+  currentIndex = nextIndex;
 });
 
 arrow_left.addEventListener("click", function () {
-  if (current === 0) {
-    dot[currentIndex].classList.remove("dot_selected");
-    currentIndex = slides.length - 1;
-    dot[currentIndex].classList.add("dot_selected");
-    current = slides.length - 1;
-  } else {
-    dot[currentIndex].classList.remove("dot_selected");
-    currentIndex--;
-    dot[currentIndex].classList.add("dot_selected");
-    current--;
+  previousIndex = currentIndex - 1;
+  if (previousIndex < 0) {
+    previousIndex = slides.length - 1;
   }
 
-  bannerImg.src = slides[currentIndex].image;
-  tagLine.innerHTML = slides[currentIndex].tagLine;
+  bannerImg.src = slides[previousIndex].image;
+  tagLine.innerHTML = slides[previousIndex].tagLine;
+  dot[currentIndex].classList.remove("dot_selected");
+  dot[previousIndex].classList.add("dot_selected");
+  currentIndex = previousIndex;
 });
