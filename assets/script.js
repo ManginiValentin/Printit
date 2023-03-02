@@ -41,7 +41,6 @@ const tagLine = document.querySelector(".tagLine");
 const arrow_right = document.querySelector(".arrow_right");
 const arrow_left = document.querySelector(".arrow_left");
 
-let current = 0;
 let nextIndex = 1;
 
 arrow_right.addEventListener("click", function () {
