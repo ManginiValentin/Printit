@@ -58,7 +58,7 @@ arrow_right.addEventListener("click", function () {
 });
 
 arrow_left.addEventListener("click", function () {
-  previousIndex = currentIndex - 1;
+  let previousIndex = currentIndex - 1;
   if (previousIndex < 0) {
     previousIndex = slides.length - 1;
   }
